@@ -23,3 +23,4 @@ Scoping Your Project
 Now that you have looked over your dataset, plan out what you want to analyze. What is it that you want to find out about this dataset? Based on the way information is organized, certain inspections may be easier to perform than others. As you map out the process, consider the scope of your analysis as well.
 
 Properly scoping your project will greatly benefit you; scoping creates structure while requiring you to think through your entire project 
+
