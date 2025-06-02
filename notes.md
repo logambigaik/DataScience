@@ -62,18 +62,139 @@ plt.show()
 
 **Exploring Non-Binary Categorical Variables**
 ==============================================
-In each of the previous exercises, we assessed whether there was an association between a quantitative variable (math scores) and a BINARY categorical variable (school). The categorical variable is considered binary because there are only two available options, either MS or GP. However, sometimes we are interested in an association between a quantitative variable and non-binary categorical variable. Non-binary categorical 
-Preview: Docs Loading link description
-variables
- have more than two categories.
+In each of the previous exercises, we assessed whether there was an association between a quantitative variable (math scores) and a BINARY categorical variable (school). The categorical variable is considered binary because there are only two available options, either MS or GP. However, sometimes we are interested in an association between a quantitative variable and non-binary categorical variable. Non-binary categorical have more than two categories.
 
 When looking at an association between a quantitative variable and a non-binary categorical variable, we must examine all pair-wise differences. For example, suppose we want to know whether or not an association exists between math scores (G3) and (Mjob), a categorical variable representing the mother’s job. This variable has five possible categories: at_home, health, services, teacher, or other. There are actually 10 different comparisons that we can make. For example, we can compare scores for students whose mothers work at_home or in health; at_home or other; at home or `services; etc.. The easiest way to quickly visualize these comparisons is with side-by-side box plots:
 
 sns.boxplot(data = df, x = 'Mjob', y = 'G3')
 plt.show()
 
-Copy to Clipboard
-
-title
 
 Visually, we need to compare each box to every other box. While most of these boxes overlap with each other, there are some pairs for which there are some apparent differences. For example, scores appear to be higher among students with mothers working in health than among students with mothers working at home or in an “other” job. If there are ANY pairwise differences, we can say that the variables are associated; however, it is more useful to specifically report which groups are different.
+
+**Code**
+
+import pandas as pd
+import matplotlib.pyplot as plt 
+import seaborn as sns
+import codecademylib3
+
+students = pd.read_csv('students.csv')
+
+#create the box-plot here:
+sns.boxplot(data=students, x='Fjob', y='G3')
+
+plt.show()
+
+![image](https://github.com/user-attachments/assets/934129f5-2285-4f88-898f-96eb5e945e78)
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt 
+import seaborn as sns
+import codecademylib3
+
+titanic = pd.read_csv('titanic.csv')
+
+Survived = titanic.Fare[titanic.Survived == 1]
+Dies = titanic.Fare[titanic.Survived == 0]
+
+survive_mean = np.mean(Survived)
+died_mean = np.mean(Dies)
+
+diff_mean = survive_mean-died_mean
+
+print(diff_mean)
+
+survive_med= np.median(Survived)
+died_med = np.median(Dies)
+
+diff_med = survive_med-died_med
+
+print(diff_med)
+
+sns.boxplot(data = titanic, x = 'Survived', y = 'Fare')
+plt.show()
+
+
+![image](https://github.com/user-attachments/assets/df870153-d294-4438-94c1-8e05dbc9c1a0)
+
+
+import pandas as pd
+import codecademylib3
+
+housing = pd.read_csv('housing_sample.csv')
+#print the first 10 rows of data:
+print(housing.head(10))
+
+
+**Scatter Plots**
+===========================
+One of the best ways to quickly visualize the relationship between quantitative variables is to plot them against each other in a scatter plot. This makes it easy to look for patterns or trends in the data. Let’s start by plotting the area of a rental against its monthly price to see if we can spot any patterns.
+
+plt.scatter(x = housing.price, y = housing.sqfeet)
+plt.xlabel('Rental Price (USD)')
+plt.ylabel('Area (Square Feet)')
+plt.show()
+
+![image](https://github.com/user-attachments/assets/5f69a4dc-afa8-4da0-9380-f76209351b6e)
+
+
+This image shows a scatter plot with price on the x-axis and area on the y-axis. There is a clear linear relationship; rentals that cost more tend to have larger area.
+
+While there’s a lot of variation in the data, it seems like more expensive housing tends to come with slightly more space. This suggests an association between these two variables.
+
+It’s important to note that different kinds of associations can lead to different patterns in a scatter plot. For example, the following plot shows the relationship between the age of a child in months and their weight in pounds. We can see that older children tend to weigh more but that the growth rate starts leveling off after 36 months:
+
+Plot showing the relationship between the age of a child in months and their weight in pounds. We can see that older children tend to weigh more but that the growth rate starts leveling off after 36 months
+
+If we don’t see any patterns in a scatter plot, we can probably guess that the variables are not associated. For example, a scatter plot like this would suggest no association:
+
+Scatter plot with no apparent pattern; the points appear randomly distributed.
+![image](https://github.com/user-attachments/assets/fdeff416-51b3-416d-8e55-50cfea638cfc)
+
+
+import pandas as pd
+import matplotlib.pyplot as plt 
+import codecademylib3
+
+housing = pd.read_csv('housing_sample.csv')
+
+print(housing.head())
+
+#create your scatter plot here:
+plt.scatter(x=housing.beds, y=housing.sqfeet)
+plt.xlabel('Number of beds')
+plt.ylabel('Number of sqfeet')
+plt.show()
+
+![image](https://github.com/user-attachments/assets/27853e06-d4bb-4bb7-8933-2f7e5188901b)
+![image](https://github.com/user-attachments/assets/5176105a-38bd-4f85-af61-b37d15782577)
+
+
+**Exploring Covariance**
+=========================
+Beyond visualizing relationships, we can also use summary statistics to quantify the strength of certain associations. Covariance is a summary statistic that describes the strength of a linear relationship. A linear relationship is one where a straight line would best describe the pattern of points in a scatter plot.
+
+Covariance can range from negative infinity to positive infinity. A positive covariance indicates that a larger value of one variable is associated with a larger value of the other. A negative covariance indicates a larger value of one variable is associated with a smaller value of the other. A covariance of 0 indicates no linear relationship. Here are some examples:
+
+This figure shows three different plots. In the first, the points are almost exactly along a line with a positive slope and the label is "large positive covariance". In the middle plot, the points are randomly scattered and the label is "covariance of zero". In the last plot, the points are almost exactly on a negatively sloping line and the label is "large negative covariance"
+
+To calculate covariance, we can use the cov() function from NumPy, which produces a covariance matrix for two or more variables
+. A covariance matrix for two variables looks something like this:
+
+variable 1	variable 2
+variable 1	variance(variable 1)	covariance
+variable 2	covariance	variance(variable 2)
+In python, we can calculate this matrix as follows:
+
+cov_mat_price_sqfeet = np.cov(housing.price, housing.sqfeet)
+print(cov_mat_price_sqfeet)
+#output: 
+[[184332.9  57336.2]
+ [ 57336.2 122045.2]]
+
+
+Notice that the covariance appears twice in this matrix and is equal to 57336.2.
+
