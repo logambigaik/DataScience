@@ -9,15 +9,9 @@ sns.boxplot(data = df, x = 'school', y = 'G3')
 plt.show()
 
 
-
-title
-
 Looking at the plot, we can clearly see that there is a lot of overlap between the boxes (i.e. the middle 50% of the data). Therefore, we can be more confident that there is not much difference between the math scores of the two groups.
 
 In contrast, suppose we saw the following plot:
-
-title
-
 In this version, the boxes barely overlap, demonstrating that the middle 50% of scores are different for the two schools. This would be evidence of a stronger association between school and math score.
 
 import pandas as pd
@@ -42,19 +36,11 @@ plt.hist(scores_MS , color="red", label="MS", normed=True, alpha=0.5)
 plt.legend()
 plt.show()
 
-
-
-title
-
 By inspecting this histogram, we can clearly see that the entire distribution of scores at GP (not just the mean or median) appears slightly shifted to the right (higher) compared to the scores at MS. However, there is also still a lot of overlap between the scores, suggesting that the association is relatively weak.
 
 Note that there are only 46 students at MS, but there are 349 students at GP. If we hadn’t used normed = True, our histogram would have looked like this, making it impossible to compare the distributions fairly:
-
-title
-
 While overlapping histograms and side by side boxplots can convey similar information, histograms give us more detail and can be useful in spotting patterns that were not visible in a box plot (eg., a bimodal distribution). For example, the following set of box plots and overlapping histograms illustrate the same hypothetical data:
 
-title
 
 While the box plots and means/medians appear similar, the overlapping histograms illuminate the differences between these two distributions of scores.
 
@@ -73,3 +59,21 @@ plt.hist(scores_urban, color="blue", label="Urban", normed=True, alpha=0.5)
 plt.hist(scores_rural, color="red", label="Rural", normed=True, alpha=0.5)
 plt.legend()
 plt.show()
+
+**Exploring Non-Binary Categorical Variables**
+==============================================
+In each of the previous exercises, we assessed whether there was an association between a quantitative variable (math scores) and a BINARY categorical variable (school). The categorical variable is considered binary because there are only two available options, either MS or GP. However, sometimes we are interested in an association between a quantitative variable and non-binary categorical variable. Non-binary categorical 
+Preview: Docs Loading link description
+variables
+ have more than two categories.
+
+When looking at an association between a quantitative variable and a non-binary categorical variable, we must examine all pair-wise differences. For example, suppose we want to know whether or not an association exists between math scores (G3) and (Mjob), a categorical variable representing the mother’s job. This variable has five possible categories: at_home, health, services, teacher, or other. There are actually 10 different comparisons that we can make. For example, we can compare scores for students whose mothers work at_home or in health; at_home or other; at home or `services; etc.. The easiest way to quickly visualize these comparisons is with side-by-side box plots:
+
+sns.boxplot(data = df, x = 'Mjob', y = 'G3')
+plt.show()
+
+Copy to Clipboard
+
+title
+
+Visually, we need to compare each box to every other box. While most of these boxes overlap with each other, there are some pairs for which there are some apparent differences. For example, scores appear to be higher among students with mothers working in health than among students with mothers working at home or in an “other” job. If there are ANY pairwise differences, we can say that the variables are associated; however, it is more useful to specifically report which groups are different.
