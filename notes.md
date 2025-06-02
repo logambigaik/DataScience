@@ -209,3 +209,8 @@ cov_mat_sqfeet_beds = np.cov(housing.sqfeet,housing.beds)
 
 # store the covariance as cov_sqfeet_beds
 print(cov_mat_sqfeet_beds)
+cov_sqfeet_beds =  228.2
+
+**Output:**
+[[110669.     228.2]
+ [   228.2      0.7]]
