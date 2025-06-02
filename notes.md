@@ -234,6 +234,5 @@ from scipy.stats import pearsonr
 corr_price_sqfeet, p = pearsonr(housing.price, housing.sqfeet)
 print(corr_price_sqfeet) #output: 0.507
 
-Copy to Clipboard
 
 Generally, a correlation larger than about .3 indicates a linear association. A correlation greater than about .6 suggestions a strong linear association.
