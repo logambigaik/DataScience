@@ -1,4 +1,4 @@
-Side-by-Side Box Plots
+### Side-by-Side Box Plots
 The difference in mean math scores for students at GP and MS was 0.64. How do we know whether this difference is considered small or large? To answer this question, we need to know something about the spread of the data.
 
 One way to get a better sense of spread is by looking at a visual representation of the data. Side-by-side box plots are useful in visualizing mean and median differences because they allow us to visually estimate the variation in the data. This can help us determine if mean or median differences are “large” or “small”.
@@ -8,7 +8,7 @@ Let’s take a look at side by side boxplots of math scores at each school:
 sns.boxplot(data = df, x = 'school', y = 'G3')
 plt.show()
 
-Copy to Clipboard
+
 
 title
 
@@ -34,6 +34,7 @@ plt.show()
 
 
 Inspecting Overlapping Histograms
+=================================
 Another way to explore the relationship between a quantitative and categorical variable in more detail is by inspecting overlapping histograms. In the code below, setting alpha = .5 ensures that the histograms are see-through enough that we can see both of them at once. We have also used normed=True make sure that the y-axis is a density rather than a frequency (note: the newest version of matplotlib renamed this parameter density instead of normed):
 
 plt.hist(scores_GP , color="blue", label="GP", normed=True, alpha=0.5)
