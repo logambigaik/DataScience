@@ -189,8 +189,8 @@ variable 1	variance(variable 1)	covariance
 variable 2	covariance	variance(variable 2)
 In python, we can calculate this matrix as follows:
 
-cov_mat_price_sqfeet = np.cov(housing.price, housing.sqfeet)
-print(cov_mat_price_sqfeet)
+**cov_mat_price_sqfeet = np.cov(housing.price, housing.sqfeet)
+print(cov_mat_price_sqfeet)**
 #output: 
 [[184332.9  57336.2]
  [ 57336.2 122045.2]]
@@ -198,3 +198,14 @@ print(cov_mat_price_sqfeet)
 
 Notice that the covariance appears twice in this matrix and is equal to 57336.2.
 
+import numpy as np
+import pandas as pd
+np.set_printoptions(suppress=True, precision = 1) 
+
+housing = pd.read_csv('housing_sample.csv')
+
+# calculate and print covariance matrix:
+cov_mat_sqfeet_beds = np.cov(housing.sqfeet,housing.beds)
+
+# store the covariance as cov_sqfeet_beds
+print(cov_mat_sqfeet_beds)
