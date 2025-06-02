@@ -214,3 +214,26 @@ cov_sqfeet_beds =  228.2
 **Output:**
 [[110669.     228.2]
  [   228.2      0.7]]
+
+
+**Correlation- Part 1**
+=========================
+
+Like covariance, Pearson Correlation (often referred to simply as “correlation”) is a scaled form of covariance. It also measures the strength of a linear relationship, but ranges from -1 to +1, making it more interpretable.
+
+Highly associated 
+Preview: Docs Loading link description
+variables
+ with a positive linear relationship will have a correlation close to 1. Highly associated variables with a negative linear relationship will have a correlation close to -1. Variables that do not have a linear association (or a linear association with a slope of zero) will have correlations close to 0.
+
+This figure shows 5 different plots. From left to right, the plots show a correlation of 1, a large positive correlation, no correlation, a large negative correlation, and a correlation of -1.)
+
+The pearsonr() function from scipy.stats can be used to calculate correlation as follows:
+
+from scipy.stats import pearsonr
+corr_price_sqfeet, p = pearsonr(housing.price, housing.sqfeet)
+print(corr_price_sqfeet) #output: 0.507
+
+Copy to Clipboard
+
+Generally, a correlation larger than about .3 indicates a linear association. A correlation greater than about .6 suggestions a strong linear association.
