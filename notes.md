@@ -331,7 +331,8 @@ sorted_students = sorted(students, key=lambda x: x[2])
 
 print(sorted_students) 
 
-# Output: [('Bob', 'B', 12), ('Alice', 'A', 15), ('Charlie', 'A', 20)] 
+**Output**: 
+[('Bob', 'B', 12), ('Alice', 'A', 15), ('Charlie', 'A', 20)] 
 
 In this case, the lambda function lambda x: x[2] is used as the key for sorting. It tells the sorted() function to use the third element (index 2) of each tuple for comparison. As a result, the list of students is sorted based on their age (the third element in each tuple).
 
@@ -370,7 +371,5 @@ When lambda functions become too complex, it’s often better to use a regular f
 Wrapping Up
 Lambda functions are a powerful feature in Python that allow you to write more concise and functional code. They’re particularly useful for simple operations and as arguments to higher-order functions. However, it’s important to use them judiciously and switch to regular functions when the logic becomes more complex.
 
-Practice using lambda functions in your code to become more comfortable with them. Try rewriting some of your existing functions as lambda functions where appropriate, and experiment with using them in map(), filter(), and sorted().
 
-Happy coding!
 
