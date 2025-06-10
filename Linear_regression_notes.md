@@ -1,7 +1,8 @@
 # Python Linear Regression purpose ###
-### This shows Sandra’s lemonade stand’s revenue over its first 12 months of being open.
-### From eyeballing the graph, what do you think the revenue in month 13 would be?
-
+--- 
+This shows Sandra’s lemonade stand’s revenue over its first 12 months of being open.
+From eyeballing the graph, what do you think the revenue in month 13 would be?
+---
 
 ```Python
 import codecademylib3_seaborn
