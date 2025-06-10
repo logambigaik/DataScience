@@ -62,3 +62,19 @@ plt.show()
 
 <img src="https://github.com/user-attachments/assets/ae580d99-90d7-47c3-8e1c-50ad377679ca" width=350>
 
+**Loss**
+
+When we think about how we can assign a slope and intercept to fit a set of points, we have to define what the best fit is.
+
+For each data point, we calculate loss, a number that measures how bad the model’s (in this case, the line’s) prediction was. You may have seen this being referred to as error.
+
+We can think about loss as the squared distance from the point to the line. We do the squared distance (instead of just the distance) so that points above and below the line both contribute to total loss in the same way:
+
+<img src="https://github.com/user-attachments/assets/13de148d-020f-40f1-a227-7508c3dde036" width=350>
+
+In this example:
+
+* For point A, the squared distance is 9 (3²)
+* For point B, the squared distance is 1 (1²)
+  
+So the total loss, with this model, is 10. If we found a line that had less loss than 10, that line would be a better model for this data.
