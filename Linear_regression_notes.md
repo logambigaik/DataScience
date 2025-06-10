@@ -443,3 +443,52 @@ plt.show()
 **Graph**
 
 <img src='https://github.com/user-attachments/assets/59b8e595-132e-46cf-95de-6d90ca1f676d' width=350>
+
+
+### Final Review 
+
+1. We can measure how well a line fits by measuring loss.
+2. The goal of linear regression is to minimize loss.
+3. To find the line of best fit, we try to find the b value (intercept) and the m value (slope) that minimize loss.
+4. Convergence refers to when the parameters stop changing with each iteration.
+5. Learning rate refers to how much the parameters are changed on each iteration.
+6. We can use Scikit-learn’s LinearRegression() model to perform linear regression on a set of points.
+
+
+**Another example Python code **
+
+``` Python
+import codecademylib3_seaborn
+import matplotlib.pyplot as plt
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.datasets import load_boston
+
+# Boston housing dataset
+boston = load_boston()
+
+df = pd.DataFrame(boston.data, columns = boston.feature_names)
+
+# Set the x-values to the nitrogen oxide concentration:
+X = df[['NOX']]
+# Y-values are the prices:
+y = boston.target
+
+# Can we do linear regression on this?
+line_fitter = LinearRegression()
+line_fitter.fit(X, y)
+target_predict = line_fitter.predict(X)
+
+plt.scatter(X, y, alpha=0.4)
+# Plot line here:
+plt.plot(X, target_predict)
+
+plt.title("Boston Housing Dataset")
+plt.xlabel("Nitric Oxides Concentration")
+plt.ylabel("House Price ($)")
+plt.show()
+```
+
+**Output-graph**
+
+![image](https://github.com/user-attachments/assets/1a96baf2-9afc-4ffe-a5c8-7e240e68bb82)
