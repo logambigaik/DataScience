@@ -108,3 +108,29 @@ print(total_loss1, total_loss2)
 better_fit =2
 
 ```
+**Minimizing Loss**
+
+The goal of a linear regression model is to find the slope and intercept pair that minimizes loss on average across all of the data.
+
+**Gradient Descent for Intercept**
+As we try to minimize loss, we take each parameter we are changing, and move it as long as we are decreasing loss. It’s like we are moving down a hill, and stop once we reach the bottom:
+
+<img src='https://github.com/user-attachments/assets/0eb2212a-6470-468c-8ce3-1300e5d75b4c' width=350>
+
+For example, let’s say we are trying to find the intercept for a line. We currently have a guess of 10 for the intercept. At the point of 10 on the curve, the slope is downward. Therefore, if we increase the intercept, we should be lowering the loss. So we follow the gradient downwards.
+
+<img src='https://github.com/user-attachments/assets/2c3a261e-0d6b-42e5-abab-cb85358a0565' width=350>
+
+We derive these gradients using calculus. It is not crucial to understand how we arrive at the gradient equation. To find the gradient of loss as intercept changes, the formula comes out to be:
+
+<img src='https://github.com/user-attachments/assets/e3c47ba1-1e86-4819-8ef8-d04cb3341bd9' width=350>
+
+N is the number of points we have in our dataset
+m is the current gradient guess
+b is the current intercept guess
+Basically:
+
+we find the sum of y_value - (m*x_value + b) for all the y_values and x_values we have
+and then we multiply the sum by a factor of -2/N. N is the number of points we have.
+
+
