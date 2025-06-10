@@ -296,3 +296,126 @@ plt.show()
 
 <img src='https://github.com/user-attachments/assets/8a19438c-b458-422f-9561-bcdd404862c8' width=350>
 
+
+**Put it together**
+
+``` Python - gradient_descent_funcs.py
+import codecademylib3_seaborn
+import matplotlib.pyplot as plt
+
+def get_gradient_at_b(x, y, b, m):
+  N = len(x)
+  diff = 0
+  for i in range(N):
+    x_val = x[i]
+    y_val = y[i]
+    diff += (y_val - ((m * x_val) + b))
+  b_gradient = -(2/N) * diff  
+  return b_gradient
+
+def get_gradient_at_m(x, y, b, m):
+  N = len(x)
+  diff = 0
+  for i in range(N):
+      x_val = x[i]
+      y_val = y[i]
+      diff += x_val * (y_val - ((m * x_val) + b))
+  m_gradient = -(2/N) * diff  
+  return m_gradient
+
+#Your step_gradient function here
+def step_gradient(b_current, m_current, x, y, learning_rate):
+    b_gradient = get_gradient_at_b(x, y, b_current, m_current)
+    m_gradient = get_gradient_at_m(x, y, b_current, m_current)
+    b = b_current - (learning_rate * b_gradient)
+    m = m_current - (learning_rate * m_gradient)
+    return [b, m]
+  
+#Your gradient_descent function here:  
+def gradient_descent(x, y, learning_rate, num_iterations):
+  b = 0
+  m = 0
+  for i in range(num_iterations):
+    b, m = step_gradient(b, m, x, y, learning_rate)
+  return [b,m]  
+
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+revenue = [52, 74, 79, 95, 115, 110, 129, 126, 147, 146, 156, 184]
+
+#Uncomment the line below to run your gradient_descent function
+b, m = gradient_descent(months, revenue, 0.01, 1000)
+
+#Uncomment the lines below to see the line you've settled upon!
+y = [m*x + b for x in months]
+
+plt.plot(months, revenue, "o")
+plt.plot(months, y)
+
+plt.show()
+
+```
+
+**Graph**
+
+<img src='https://github.com/user-attachments/assets/b387b8ce-b3cb-4a69-8bd4-be3b6066bc24' width=350>
+
+
+**Test with real data**
+```Python
+import codecademylib3_seaborn
+from gradient_descent_funcs import gradient_descent
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("heights.csv")
+
+X = df["height"]
+y = df["weight"]
+
+
+b, m =gradient_descent(X,y,num_iterations=1000,learning_rate=0.0001)
+
+y_predictions =[m*x + b for x in X]
+
+plt.plot(X, y, 'o')
+#plot your line here:
+plt.plot(X, y_predictions)
+plt.show()
+# print(y_predictions)
+# print(f"{X}.2f-{y}.2f")
+
+```
+
+**Graph**
+
+<img src='https://github.com/user-attachments/assets/a1da5708-b3d5-4a87-9b80-d1038ae9272d' width=350>
+
+
+###Scikit-Learn
+
+Luckily, we don’t have to do this every time we want to use linear regression. We can use Python’s scikit-learn library. Scikit-learn, or sklearn, is used specifically for 
+Preview: Docs Machine learning is a branch of artificial intelligence that enables systems to learn from data and make predictions or decisions without explicit programming.
+Machine Learning
+. Inside the linear_model module, there is a LinearRegression() function we can use:
+
+**from sklearn.linear_model import LinearRegression**
+
+
+You can first create a LinearRegression model, and then fit it to your x and y data:
+
+**line_fitter = LinearRegression()
+line_fitter.fit(X, y)**
+
+
+
+The .fit() method  gives the model two  variables that are useful to us:
+
+1. the line_fitter.coef_, which contains the slope
+2. the line_fitter.intercept_, which contains the intercept
+
+We can also use the .predict() function to pass in x-values and receive the y-values that this line would predict:
+
+**y_predicted = line_fitter.predict(X)**
+
+Note: the num_iterations and the learning_rate that you learned about in your own implementation have default values within scikit-learn,
+
