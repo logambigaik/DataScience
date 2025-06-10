@@ -133,4 +133,166 @@ Basically:
 
 we find the sum of y_value - (m*x_value + b) for all the y_values and x_values we have and then we multiply the sum by a factor of -2/N. N is the number of points we have.
 
+```Python
+def get_gradient_at_b(x, y, m, b):
+  diff = 0
+
+  # N is the number of points
+  N = len(x)
+  
+  for i in range(0, len(x)):
+    y_val = y[i]
+    x_val = x[i]
+    diff += (y_val - ((m * x_val) + b))
+  
+  # Define b_gradient
+  b_gradient = -2/N * diff
+  return b_gradient
+```
+
+**Gradient Descent for Slope**
+
+We have a function to find the gradient of b at every point. To find the m gradient, or the way the loss changes as the slope of our line changes, we can use this formula:
+
+<img src="https://github.com/user-attachments/assets/4e4c390b-e60c-4767-bec6-51cbac485879" width=350>
+
+Once more:
+
+* N is the number of points you have in your dataset
+* m is the current gradient guess
+* b is the current intercept guess
+
+To find the m gradient:
+
+we find the sum of x_value * (y_value - (m*x_value + b)) for all the y_values and x_values we have and then we multiply the sum by a factor of -2/N. N is the number of points we have.
+
+Once we have a way to calculate both the m gradient and the b gradient, we’ll be able to follow both of those gradients downwards to the point of lowest loss for both the m value and the b value. Then, we’ll have the best m and the best b to fit our data!
+
+```Python
+def get_gradient_at_b(x, y, m, b):
+    diff = 0
+    N = len(x)
+    for i in range(N):
+      y_val = y[i]
+      x_val = x[i]
+      diff += (y_val - ((m * x_val) + b))
+    b_gradient = -2/N * diff
+    return b_gradient
+  
+def get_gradient_at_m(x, y, m, b):
+    diff = 0
+    N = len(x)
+    for i in range(N):
+      y_val = y[i]
+      x_val = x[i]
+      diff += x_val*(y_val - ((m * x_val) + b))
+    m_gradient = -2/N * diff
+    return m_gradient
+```
+
+
+**Put it Together**
+
+Now that we know how to calculate the gradient, we want to take a “step” in that direction. However, it’s important to think about whether that step is too big or too small. We don’t want to overshoot the minimum error!
+
+We can scale the size of the step by multiplying the gradient by a learning rate.
+
+To find a new b value, we would say: **new_b = current_b - (learning_rate * b_gradient)**
+
+where **current_b** is our guess for what the b value is, **b_gradient** is the gradient of the loss curve at our current guess, and learning_rate is proportional to the size of the step we want to take.
+
+``` Python
+def get_gradient_at_b(x, y, b, m):
+  N = len(x)
+  diff = 0
+  for i in range(N):
+    x_val = x[i]
+    y_val = y[i]
+    diff += (y_val - ((m * x_val) + b))
+  b_gradient = -(2/N) * diff  
+  return b_gradient
+
+def get_gradient_at_m(x, y, b, m):
+  N = len(x)
+  diff = 0
+  for i in range(N):
+      x_val = x[i]
+      y_val = y[i]
+      diff += x_val * (y_val - ((m * x_val) + b))
+  m_gradient = -(2/N) * diff  
+  return m_gradient
+
+#Your step_gradient function here
+def step_gradient(x, y, b_current, m_current):
+    b_gradient = get_gradient_at_b(x, y, b_current, m_current)
+    m_gradient = get_gradient_at_m(x, y, b_current, m_current)
+    b = b_current - (0.01 * b_gradient)
+    m = m_current - (0.01 * m_gradient)
+    return [b, m]
+
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+revenue = [52, 74, 79, 95, 115, 110, 129, 126, 147, 146, 156, 184]
+
+# current intercept guess:
+b = 0
+# current slope guess:
+m = 0
+
+b, m = step_gradient(months, revenue, b, m)
+print(b, m)
+```
+
+**Convergence**
+
+How do we know when we should stop changing the parameters m and b? How will we know when our program has learned enough?
+
+To answer this, we have to define convergence. Convergence is when the loss stops changing (or changes very slowly) when parameters are changed.
+
+``` Python
+import codecademylib3_seaborn
+import matplotlib.pyplot as plt
+from data import bs, bs_000000001, bs_01
+
+iterations = range(1400)
+
+num_iterations = 800
+convergence_b = 47
+plt.plot(iterations, bs)
+plt.xlabel("Iterations")
+plt.ylabel("b value")
+plt.show()
+```
+
+**Graph**
+
+<img src='https://github.com/user-attachments/assets/b5925f43-45b1-4b0e-95f8-1519b7c62438' width=350>
+
+**Learning Rate**
+
+We want our program to be able to iteratively learn what the best m and b values are. So for each m and b pair that we guess, we want to move them in the direction of the gradients we’ve calculated. But how far do we move in that direction?
+
+We have to choose a learning rate, which will determine how far down the loss curve we go.
+
+A small learning rate will take a long time to converge — you might run out of time or cycles before getting an answer. A large learning rate might skip over the best value. It might never converge! Oh no!
+
+<img src="https://github.com/user-attachments/assets/d39fbf8f-c84f-4a09-a6af-ae4afdb6e8da" width=350>
+
+
+Finding the absolute best learning rate is not necessary for training a model. You just have to find a learning rate large enough that gradient descent converges with the efficiency you need, and not so large that convergence never happens.
+
+``` Python
+import codecademylib3_seaborn
+import matplotlib.pyplot as plt
+from data import bs, bs_000000001, bs_01
+
+# iterations = range(1400)
+iterations = range(100)
+
+plt.plot(iterations, bs_01)
+plt.xlabel("Iterations")
+plt.ylabel("b value")
+plt.show()
+```
+
+<img src='https://github.com/user-attachments/assets/8a19438c-b458-422f-9561-bcdd404862c8' width=350>
 
