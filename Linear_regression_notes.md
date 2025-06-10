@@ -78,3 +78,33 @@ In this example:
 * For point B, the squared distance is 1 (1²)
   
 So the total loss, with this model, is 10. If we found a line that had less loss than 10, that line would be a better model for this data.
+
+We have three points, (1, 5), (2, 1), and (3, 3). We are trying to find a line that produces lowest loss. As per calculation m2 value matches
+
+```Python
+x = [1, 2, 3]
+y = [5, 1, 3]
+
+#y = x
+m1 = 1
+b1 = 0
+
+#y = 0.5x + 1
+m2 = 0.5
+b2 = 1
+
+y_predicted1 =[m1 * i +b1 for i in x ]
+y_predicted2 =[m2 * i +b2 for i in x ]
+
+total_loss1 = 0
+for i in range(len(y)):
+  total_loss1 += (y[i] - y_predicted1[i]) ** 2
+
+total_loss2 = 0
+for i in range(len(y)):
+  total_loss2 += (y[i] - y_predicted2[i]) ** 2
+
+print(total_loss1, total_loss2)
+better_fit =2
+
+```
