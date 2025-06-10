@@ -391,7 +391,7 @@ plt.show()
 <img src='https://github.com/user-attachments/assets/a1da5708-b3d5-4a87-9b80-d1038ae9272d' width=350>
 
 
-###Scikit-Learn
+### Scikit-Learn
 
 Luckily, we don’t have to do this every time we want to use linear regression. We can use Python’s scikit-learn library. Scikit-learn, or sklearn, is used specifically for 
 Preview: Docs Machine learning is a branch of artificial intelligence that enables systems to learn from data and make predictions or decisions without explicit programming.
@@ -419,3 +419,27 @@ We can also use the .predict() function to pass in x-values and receive the y-va
 
 Note: the num_iterations and the learning_rate that you learned about in your own implementation have default values within scikit-learn,
 
+```Python #Sample Python Code for Scikit-learn
+import codecademylib3_seaborn
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+import numpy as np
+
+temperature = np.array(range(60, 100, 2))
+temperature = temperature.reshape(-1, 1)
+sales = [65, 58, 46, 45, 44, 42, 40, 40, 36, 38, 38, 28, 30, 22, 27, 25, 25, 20, 15, 5]
+
+plt.plot(temperature, sales, 'o')
+
+**line_fitter = LinearRegression()
+line_fitter.fit(temperature, sales)
+sales_predict = line_fitter.predict(temperature)**
+
+plt.plot(temperature, sales_predict)
+plt.show()
+
+```
+
+**Graph**
+
+<img src='https://github.com/user-attachments/assets/59b8e595-132e-46cf-95de-6d90ca1f676d' width=350>
