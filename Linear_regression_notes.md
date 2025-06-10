@@ -3,7 +3,7 @@
 This shows Sandra’s lemonade stand’s revenue over its first 12 months of being open.
 From eyeballing the graph, what do you think the revenue in month 13 would be?
 
-<img src="https://github.com/user-attachments/assets/84de1a56-6a99-433d-9f34-aecad01044f3" width=300>
+<img src="https://github.com/user-attachments/assets/84de1a56-6a99-433d-9f34-aecad01044f3" width=350>
 
 ```Python
 import seaborn
@@ -60,5 +60,5 @@ plt.show()
 ```
 **Graph**
 
-<img src="https://github.com/user-attachments/assets/ae580d99-90d7-47c3-8e1c-50ad377679ca" width=150>
+<img src="https://github.com/user-attachments/assets/ae580d99-90d7-47c3-8e1c-50ad377679ca" width=350>
 
