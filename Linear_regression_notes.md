@@ -7,7 +7,7 @@ From eyeballing the graph, what do you think the revenue in month 13 would be?
 ---
 
 ```Python
-import codecademylib3_seaborn
+import seaborn
 import matplotlib.pyplot as plt
 
 months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
