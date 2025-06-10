@@ -125,12 +125,12 @@ We derive these gradients using calculus. It is not crucial to understand how we
 
 <img src='https://github.com/user-attachments/assets/e3c47ba1-1e86-4819-8ef8-d04cb3341bd9' width=350>
 
-N is the number of points we have in our dataset
-m is the current gradient guess
-b is the current intercept guess
+* N is the number of points we have in our dataset
+* m is the current gradient guess
+* b is the current intercept guess
+
 Basically:
 
-we find the sum of y_value - (m*x_value + b) for all the y_values and x_values we have
-and then we multiply the sum by a factor of -2/N. N is the number of points we have.
+we find the sum of y_value - (m*x_value + b) for all the y_values and x_values we have and then we multiply the sum by a factor of -2/N. N is the number of points we have.
 
 
