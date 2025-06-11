@@ -492,4 +492,4 @@ plt.show()
 
 **Output-graph**
 
-![image](https://github.com/user-attachments/assets/1a96baf2-9afc-4ffe-a5c8-7e240e68bb82)
+<img src='https://github.com/user-attachments/assets/1a96baf2-9afc-4ffe-a5c8-7e240e68bb82' width=350>
