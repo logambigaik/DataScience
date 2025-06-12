@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pandas Commands Reference</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2d3748;
+    }
+
+    .accordion {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 20px 0;
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      background-color: #2b6cb0;
+      color: white;
+      padding: 18px 24px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .accordion-header:hover {
+      background-color: #24548c;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      background: #f1f5f9;
+      padding: 0 24px;
+    }
+
+    .accordion-content.open {
+      max-height: 2000px;
+      padding: 20px 24px;
+    }
+
+    .zoom-box {
+      background-color: #e2e8f0;
+      padding: 18px;
+      margin: 10px 0;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .zoom-box:hover {
+      transform: scale(1.02);
+      background-color: #cbd5e1;
+    }
+
+    pre {
+      background: #f8fafc;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    .icon {
+      transition: transform 0.4s ease;
+    }
+
+    .icon.rotate {
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Important Pandas Commands</h1>
+
+    <!-- df.info() -->
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        ℹ️ df.info() <span class="icon">▶</span>
+      </div>
+      <div class="accordion-content">
+        <div class="zoom-box">
+          <strong>Code:</strong>
+          <pre><code>df.info()</code></pre>
+        </div>
+        <div class="zoom-box">
+          <strong>Output:</strong>
+          <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 223 entries, 0 to 222
+Data columns (total 8 columns):
+ #   Column              Non-Null Count  Dtype 
+---  ------              --------------  ----- 
+ 0   Country/Territory   223 non-null    object
+ 1   UN_Region           223 non-null    object
+ 2   IMF_Estimate        223 non-null    int64 
+ 3   IMF_Year            223 non-null    int64 
+ 4   WorldBank_Estimate  223 non-null    int64 
+ 5   WorldBank_Year      223 non-null    int64 
+ 6   UN_Estimate         223 non-null    int64 
+ 7   UN_Year             223 non-null    object
+dtypes: int64(5), object(3)
+memory usage: 14.1 KB</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- value_counts() -->
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        📊 df["UN_Region"].value_counts() <span class="icon">▶</span>
+      </div>
+      <div class="accordion-content">
+        <div class="zoom-box">
+          <strong>Code:</strong>
+          <pre><code>df["UN_Region"].value_counts()</code></pre>
+        </div>
+        <div class="zoom-box">
+          <strong>Output (Example):</strong>
+          <pre><code>Africa           54
+Asia             49
+Europe           44
+Americas         40
+Oceania          36
+Name: UN_Region, dtype: int64</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- sort_values() -->
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        🔽 df.sort_values("IMF_Estimate", ascending=False) <span class="icon">▶</span>
+      </div>
+      <div class="accordion-content">
+        <div class="zoom-box">
+          <strong>Code:</strong>
+          <pre><code>df.sort_values("IMF_Estimate", ascending=False)</code></pre>
+        </div>
+        <div class="zoom-box">
+          <strong>Output (Top 3 Rows):</strong>
+          <pre><code>     Country/Territory     UN_Region    IMF_Estimate
+0    United States         Americas     330000000
+1    India                 Asia         1380000000
+2    China                 Asia         1439323776
+...</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- groupby() -->
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        🧮 df.groupby("UN_Region")["UN_Estimate"].mean() <span class="icon">▶</span>
+      </div>
+      <div class="accordion-content">
+        <div class="zoom-box">
+          <strong>Code:</strong>
+          <pre><code>df.groupby("UN_Region")["UN_Estimate"].mean()</code></pre>
+        </div>
+        <div class="zoom-box">
+          <strong>Output (Example):</strong>
+          <pre><code>UN_Region
+Africa      35400000
+Americas    67800000
+Asia       102000000
+Europe      42300000
+Oceania     8900000
+Name: UN_Estimate, dtype: float64</code></pre>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    function toggleAccordion(header) {
+      const icon = header.querySelector(".icon");
+      const content = header.nextElementSibling;
+      const isOpen = content.classList.contains("open");
+
+      document.querySelectorAll(".accordion-content").forEach(c => c.classList.remove("open"));
+      document.querySelectorAll(".icon").forEach(i => i.classList.remove("rotate"));
+
+      if (!isOpen) {
+        content.classList.add("open");
+        icon.classList.add("rotate");
+      }
+    }
+  </script>
+</body>
+</html>
