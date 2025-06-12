@@ -60,12 +60,18 @@
       padding: 20px 24px;
     }
 
+    .scrollable-section {
+      max-height: 600px;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
     img {
       max-width: 100%;
       border-radius: 8px;
       margin-top: 15px;
     }
-    
+
     .zoom-box {
       background-color: #e2e8f0;
       padding: 18px;
@@ -117,7 +123,6 @@
       color: #2b6cb0;
       margin-top: 20px;
     }
-
   </style>
 </head>
 <body>
@@ -131,106 +136,102 @@
       </div>
       <div class="accordion-content">
 
-        <!-- Section 1: Inspect the data -->
-        <div class="section-title">1. Inspect the Data</div>
+        <!-- Scrollable section starts -->
+        <div class="scrollable-section">
+          <div class="section-title">1. Inspect the Data</div>
 
-        <!-- Subsection: df.head() -->
-        <div class="zoom-box">
-          <strong>df.head()</strong>
-          <pre>df.head()</pre>
-        </div>
-        <div class="zoom-box">
-          <strong>Description:</strong>
-          <p>Preview the first few rows of the dataset to understand its structure.</p>
-        </div>
-        <div class="zoom-box">
-          <strong>Output:</strong><br>
-          <img src="https://github.com/user-attachments/assets/7a1f44ed-a942-4084-ba06-c71da68a3acf">
-        </div>
+          <div class="zoom-box">
+            <strong>df.head()</strong>
+            <pre>df.head()</pre>
+          </div>
+          <div class="zoom-box">
+            <strong>Description:</strong>
+            <p>Preview the first few rows of the dataset to understand its structure.</p>
+          </div>
+          <div class="zoom-box">
+            <strong>Output:</strong><br>
+            <img src="https://github.com/user-attachments/assets/7a1f44ed-a942-4084-ba06-c71da68a3acf">
+          </div>
 
-        <!-- Subsection: df.sample() -->
-        <div class="zoom-box">
-          <strong>df.sample(3)</strong>
-          <pre>df.sample(3)</pre>
-        </div>
-        <div class="zoom-box">
-          <strong>Description:</strong>
-          <p>Selects 3 random rows to get a quick look at different parts of the dataset.</p>
-        </div>
-        <div class="zoom-box">
-          <strong>Output:</strong><br>
-          <img src="https://github.com/user-attachments/assets/5a9f5de6-4f42-4c34-894c-92009e304c0a" />
-        </div>
+          <div class="zoom-box">
+            <strong>df.sample(3)</strong>
+            <pre>df.sample(3)</pre>
+          </div>
+          <div class="zoom-box">
+            <strong>Description:</strong>
+            <p>Selects 3 random rows to get a quick look at different parts of the dataset.</p>
+          </div>
+          <div class="zoom-box">
+            <strong>Output:</strong><br>
+            <img src="https://github.com/user-attachments/assets/5a9f5de6-4f42-4c34-894c-92009e304c0a" />
+          </div>
 
-        <!-- Subsection: df.groupby() -->
-        <div class="zoom-box">
-          <strong>df.groupby("UN_Region")["IMF_Estimate"].mean()</strong>
-          <pre>df.groupby("UN_Region")["IMF_Estimate"].mean()</pre>
-        </div>
-        <div class="zoom-box">
-          <strong>Description:</strong>
-          <p>Calculates the average IMF estimate grouped by UN region.</p>
-        </div>
-        <div class="zoom-box">
-          <strong>Output:</strong><br>
-          <img src="https://github.com/user-attachments/assets/dac79867-c9a4-4c45-bfdf-5eb27348c18b" />
-        </div>
+          <div class="zoom-box">
+            <strong>df.groupby("UN_Region")["IMF_Estimate"].mean()</strong>
+            <pre>df.groupby("UN_Region")["IMF_Estimate"].mean()</pre>
+          </div>
+          <div class="zoom-box">
+            <strong>Description:</strong>
+            <p>Calculates the average IMF estimate grouped by UN region.</p>
+          </div>
+          <div class="zoom-box">
+            <strong>Output:</strong><br>
+            <img src="https://github.com/user-attachments/assets/dac79867-c9a4-4c45-bfdf-5eb27348c18b" />
+          </div>
 
-        <!-- Subsection: df.loc -->
-        <div class="zoom-box">
-          <strong>df.iloc[0]</strong>
-          <pre>df.iloc[0]</pre>
-        </div>
-        <div class="zoom-box">
-          <strong>Description:</strong><br>
-          <img src="https://github.com/user-attachments/assets/45ba3b05-69c2-4a52-b8c0-405f546d07e3" />
-        </div>
-        <div class="zoom-box">
-          <strong>Output:</strong>
-          <p></p>
-        </div>
+          <div class="zoom-box">
+            <strong>df.iloc[0]</strong>
+            <pre>df.iloc[0]</pre>
+          </div>
+          <div class="zoom-box">
+            <strong>Description:</strong><br>
+            <img src="https://github.com/user-attachments/assets/45ba3b05-69c2-4a52-b8c0-405f546d07e3" />
+          </div>
+          <div class="zoom-box">
+            <strong>Output:</strong>
+            <p></p>
+          </div>
 
-        <!-- Subsection: df.loc -->
-        <div class="zoom-box">
-          <strong>df.loc[0]</strong>
-          <pre>df.loc[0]</pre>
-        </div>
-        <div class="zoom-box">
-          <strong>Description:</strong>
-          <p>Accesses the first row using positional indexing.</p>
-        </div>
-        <div class="zoom-box">
-          <strong>Output:</strong><br>
-          <img src="https://github.com/user-attachments/assets/55efbe20-ed00-4bc8-8d16-d67c4c95abbd" />
-        </div>
+          <div class="zoom-box">
+            <strong>df.loc[0]</strong>
+            <pre>df.loc[0]</pre>
+          </div>
+          <div class="zoom-box">
+            <strong>Description:</strong>
+            <p>Accesses the first row using positional indexing.</p>
+          </div>
+          <div class="zoom-box">
+            <strong>Output:</strong><br>
+            <img src="https://github.com/user-attachments/assets/55efbe20-ed00-4bc8-8d16-d67c4c95abbd" />
+          </div>
 
-        <!-- Subsection: df.fillna() -->
-        <div class="zoom-box">
-          <strong>df.fillna(0)</strong>
-          <pre>df.fillna(0)</pre>
-        </div>
-        <div class="zoom-box">
-          <strong>Description:</strong>
-          <p>Fills missing values with 0 for data consistency.</p>
-        </div>
-        <div class="zoom-box">
-          <strong>Output:</strong>
-          <p>[DataFrame with missing values filled as 0]</p>
-        </div>
+          <div class="zoom-box">
+            <strong>df.fillna(0)</strong>
+            <pre>df.fillna(0)</pre>
+          </div>
+          <div class="zoom-box">
+            <strong>Description:</strong>
+            <p>Fills missing values with 0 for data consistency.</p>
+          </div>
+          <div class="zoom-box">
+            <strong>Output:</strong>
+            <p>[DataFrame with missing values filled as 0]</p>
+          </div>
 
-        <!-- Subsection: df.isna() -->
-        <div class="zoom-box">
-          <strong>df.isna().sum()</strong>
-          <pre>df.isna().sum()</pre>
+          <div class="zoom-box">
+            <strong>df.isna().sum()</strong>
+            <pre>df.isna().sum()</pre>
+          </div>
+          <div class="zoom-box">
+            <strong>Description:</strong>
+            <p>Checks how many missing values are present in each column.</p>
+          </div>
+          <div class="zoom-box">
+            <strong>Output:</strong>
+            <p>[Missing values count per column]</p>
+          </div>
         </div>
-        <div class="zoom-box">
-          <strong>Description:</strong>
-          <p>Checks how many missing values are present in each column.</p>
-        </div>
-        <div class="zoom-box">
-          <strong>Output:</strong>
-          <p>[Missing values count per column]</p>
-        </div>
+        <!-- Scrollable section ends -->
 
       </div>
     </div>
