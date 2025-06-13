@@ -251,114 +251,107 @@
           </div>
         </div>
         <!-- Scrollable section ends -->
-
-      </div>
     </div>
+
     <div class="accordion">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          Tools & Techniques: Seaborn -Visualising the Data  <span class="icon">▶</span>
+          Tools & Techniques: Seaborn - Visualizing the Data <span class="icon">▶</span>
         </div>
-        
-        <!-- Scrollable section starts -->
-        <div class="scrollable-section">
-            <div class="section-title"></div>
-
-            <div class="zoom-box">
-              <strong>Histogram</strong>
-              <pre>import matplotlib.pyplot as plt <br>import seaborn as sns <br>df.hist(figsize=(10,8))<br>plt.show()
-              </pre>
-            </div>
-            
-            <div class="zoom-box">
-                <strong>Description:</strong>
-                <p><ul>
-                    <li>This line of code generates histograms for all numerical columns in the DataFrame df.</li>
-
-                    <li>hist() is a Pandas method that creates a histogram for each numeric feature (like integers or floats).</li>
-        
-                    <li>figsize=(10,8) sets the size of the entire plot figure — 10 units wide by 8 units tall.</li>
-                </ul></p>
-            </div>
-    
-            <div class="zoom-box">
-                <strong>Output:</strong><br>
-                <img src="https://github.com/user-attachments/assets/9d9821ea-886e-4abe-b38f-e4b9883bf936">
-            </div>
-
-          <!-- Scrollable section starts -->
+        <div class="accordion-content">
           <div class="scrollable-section">
-            <div class="section-title"></div>
-  
+      
+            <div class="section-title">Histogram - All Numeric Columns</div>
             <div class="zoom-box">
-              <strong>Histogram</strong>
-              <pre>df[["IMF_Estimate", "UN_Estimate", "WorldBank_Estimate"]].hist(bins=3, figsize=(12,9))<br>plt.show()</pre>
+              <strong>Code:</strong>
+              <pre>
+      import matplotlib.pyplot as plt
+      import seaborn as sns
+      df.hist(figsize=(10,8))
+      plt.show()
+              </pre>
             </div>
             <div class="zoom-box">
               <strong>Description:</strong>
-              <p>This command creates histograms for three specific columns in the DataFrame<ul>
-                <li>df[["IMF_Estimate", "UN_Estimate", "WorldBank_Estimate"]]:
-                    Selects only the three columns from the DataFrame.</li>
-
-                <li>.hist(...):
-                    Plots a histogram for each selected column.</li>
-                
-                <li>bins=3:
-                    Divides the data range into 3 bins or intervals. This controls how coarse or fine the histogram</li>
-                <li>figsize=(12,9):
-                    Sets the size of the entire plot figure (12 units wide, 9 units tall).</li>
-             </ul></p>
+              <ul>
+                <li>Generates histograms for all numeric columns in the DataFrame.</li>
+                <li><code>hist()</code> plots distributions; <code>figsize</code> adjusts plot size.</li>
+              </ul>
             </div>
             <div class="zoom-box">
               <strong>Output:</strong><br>
-              <img src="https://github.com/user-attachments/assets/84d63faf-d76f-47ec-998d-b12bec10a993">
+              <img src="https://github.com/user-attachments/assets/9d9821ea-886e-4abe-b38f-e4b9883bf936" />
             </div>
-
-        <!-- Scrollable section starts -->
-        <div class="scrollable-section">
-            <div class="section-title"></div>
-
+      
+            <div class="section-title">Histogram - Selected Columns</div>
             <div class="zoom-box">
-              <strong>HeatMap</strong>
-              <pre>corr = df[["IMF_Estimate", "UN_Estimate", "WorldBank_Estimate"]].corr()<br>plt.figure(figsize=(9,6))<br>sns.heatmap(corr)<br>plt.show()
+              <strong>Code:</strong>
+              <pre>
+      df[["IMF_Estimate", "UN_Estimate", "WorldBank_Estimate"]].hist(bins=3, figsize=(12,9))
+      plt.show()
               </pre>
             </div>
-            
             <div class="zoom-box">
-                <strong>Description:</strong>
-                <p>sns.heatmap() function from the Seaborn library is used to create a heatmap, which is a two-dimensional graphical representation of data where individual values are represented by color intensity.</p>
+              <strong>Description:</strong>
+              <ul>
+                <li>Plots histograms for specific columns: IMF, UN, and World Bank estimates.</li>
+                <li><code>bins=3</code> defines the number of intervals; <code>figsize</code> adjusts layout size.</li>
+              </ul>
             </div>
-    
             <div class="zoom-box">
-                <strong>Output:</strong><br>
-                <img src="https://github.com/user-attachments/assets/f664ce3c-2e4b-455e-9b98-7abf29f2fc21">
+              <strong>Output:</strong><br>
+              <img src="https://github.com/user-attachments/assets/84d63faf-d76f-47ec-998d-b12bec10a993" />
             </div>
-
-        <!-- Scrollable section starts -->
-        <div class="scrollable-section">
-            <div class="section-title"></div>
-
+      
+            <div class="section-title">Heatmap - Basic</div>
             <div class="zoom-box">
-              <strong>HeatMap</strong>
-              <pre>corr = df[["IMF_Estimate", "UN_Estimate", "WorldBank_Estimate"]].corr()<br>plt.figure(figsize=(9,6))<br>sns.heatmap(corr, annot=True, fmt=".2f", cmap = 'GnBu', annot_kws={"size": 12})<br># annot show labes, cmap change colour, annot_kws change text size, fmt decimal<br>plt.show()
+              <strong>Code:</strong>
+              <pre>
+      corr = df[["IMF_Estimate", "UN_Estimate", "WorldBank_Estimate"]].corr()
+      plt.figure(figsize=(9,6))
+      sns.heatmap(corr)
+      plt.show()
               </pre>
             </div>
-            
             <div class="zoom-box">
-                <strong>Description:</strong>
-                <ul>
-                    <li><b>corr</b>: This is the correlation matrix generated by df.corr(). It contains pairwise correlation values (ranging from -1 to 1) between all numerical columns.</li>
-                    <li><b>annot=True</b>: This tells Seaborn to annotate each cell of the heatmap with its numeric correlation value, making it easier to interpret the strength of relationships.</li>
-                </ul>
-                <p></p>
+              <strong>Description:</strong>
+              <ul>
+                <li>Computes correlation matrix for selected estimates.</li>
+                <li><code>sns.heatmap()</code> visualizes numeric relationships with color intensity.</li>
+              </ul>
             </div>
-    
             <div class="zoom-box">
-                <strong>Output:</strong><br>
-                <img src="https://github.com/user-attachments/assets/ac21cfa3-b106-44f4-9b03-edc51780b2fd">
+              <strong>Output:</strong><br>
+              <img src="https://github.com/user-attachments/assets/f664ce3c-2e4b-455e-9b98-7abf29f2fc21" />
             </div>
-
-
-    </div>
+      
+            <div class="section-title">Heatmap - With Annotations & Color</div>
+            <div class="zoom-box">
+              <strong>Code:</strong>
+              <pre>
+      corr = df[["IMF_Estimate", "UN_Estimate", "WorldBank_Estimate"]].corr()
+      plt.figure(figsize=(9,6))
+      sns.heatmap(corr, annot=True, fmt=".2f", cmap='GnBu', annot_kws={"size": 12})
+      plt.show()
+              </pre>
+            </div>
+            <div class="zoom-box">
+              <strong>Description:</strong>
+              <ul>
+                <li><code>annot=True</code>: Adds numeric values in the heatmap cells.</li>
+                <li><code>fmt=".2f"</code>: Displays values with 2 decimal places.</li>
+                <li><code>cmap='GnBu'</code>: Sets the color palette.</li>
+                <li><code>annot_kws={"size": 12}</code>: Adjusts annotation font size.</li>
+              </ul>
+            </div>
+            <div class="zoom-box">
+              <strong>Output:</strong><br>
+              <img src="https://github.com/user-attachments/assets/ac21cfa3-b106-44f4-9b03-edc51780b2fd" />
+            </div>
+      
+          </div> <!-- scrollable-section -->
+        </div> <!-- accordion-content -->
+      </div>
+      
 
   <script>
     function toggleAccordion(header) {
