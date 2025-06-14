@@ -158,6 +158,68 @@ corr_gm_ford = calculate_correlation(returns_general_motors, returns_ford)
 print('The correlation coefficient between General Motors and Ford is', corr_gm_ford)
 
 # Write code here
+corr_gm_em = calculate_correlation(returns_general_motors, returns_exxon_mobil)
+print('The correlation coefficient between General Motors and ExxonMobil is', corr_gm_em)
+
+corr_gm_apple = calculate_correlation(returns_general_motors, returns_apple)
+print('The correlation coefficient between General Motors and Apple is', corr_gm_apple)
+
+corrcoef_matrix = np.corrcoef([returns_general_motors, returns_ford, returns_exxon_mobil, returns_apple])
+print(corrcoef_matrix)
+```
+
+```Python
+from data import returns_general_motors, returns_ford, returns_exxon_mobil, returns_apple
+from math import sqrt
+import numpy as np
+
+def calculate_correlation(set_x, set_y):
+  # Sum of all values in each dataset
+  sum_x = sum(set_x)
+  sum_y = sum(set_y)
+
+  # Sum of all squared values in each dataset
+  sum_x2 = sum([x ** 2 for x in set_x])
+  sum_y2 = sum([y ** 2 for y in set_y])
+
+  # Sum of the product of each respective element in each dataset 
+  sum_xy = sum([x * y for x, y in zip(set_x, set_y)])
+
+  # Length of dataset
+  n = len(set_x)
+
+  # Calculate correlation coefficient
+  numerator = n * sum_xy - sum_x * sum_y
+  denominator = sqrt((n * sum_x2 - sum_x ** 2) * (n * sum_y2 - sum_y ** 2))
+
+  return numerator / denominator
+
+# Function calls
+print('The correlation coefficient between General Motors and Ford is', calculate_correlation(returns_general_motors, returns_ford))
+print('The correlation coefficient between General Motors and ExxonMobil is', calculate_correlation(returns_general_motors, returns_exxon_mobil))
+print('The correlation coefficient between General Motors and Apple is', calculate_correlation(returns_general_motors, returns_apple))
+```
+
+```Python
+from utils import calculate_variance, calculate_stddev
+
+def display_as_percentage(val):
+  return '{:.1f}%'.format(val * 100)
+
+annual_returns = [0.02, 0.05, -0.04, 0.04, 0.02, -0.02, 0.01, 0.03, 0.05, 0.02]
+
+# Write code here
+annual_returns_percentage = [display_as_percentage(r) for r in annual_returns]
+print(annual_returns_percentage)
+
+print('The historical annual rates of return are:', ', '.join(annual_returns_percentage))
+
+variance = calculate_variance(annual_returns)
+print('The variance of the rates of return is', variance)
+
+stddev = display_as_percentage(calculate_stddev(annual_returns))
+print('The standard deviation of the rates of return is', stddev)
+
 
 
 ```
