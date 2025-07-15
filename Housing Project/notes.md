@@ -339,3 +339,44 @@ cases, as it is not influenced by extremely high or low values that could distor
 print(avg_price_explanation)
 print(mean_vs_median_explanation)
 print(when_to_use_median_explanation)
+
+
+# Measures of Spread: Avocado Price and Volume Analysis
+
+In this analysis, we are exploring the spread (range) of two main variables in the avocado dataset:
+- `AveragePrice`: The daily average price of avocados.
+- `Total Volume`: The estimated number of avocados sold (which may include fractional values across multiple cities).
+
+---
+
+## 🔢 Code
+
+```python
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('avocado.csv')
+print(df.head())
+
+# Get the list of column names
+my_columns = list(df.columns)
+print(my_columns)
+
+# Maximum and minimum Total Volume
+max_vol = df["Total Volume"].max()
+min_vol = df["Total Volume"].min()
+print(max_vol, min_vol)
+
+# Range of Total Volume
+range_vol = max_vol - min_vol
+print(range_vol)
+
+# Maximum and minimum Average Price
+max_price = df["AveragePrice"].max()
+min_price = df["AveragePrice"].min()
+print(max_price, min_price)
+
+# Range of Average Price
+range_price = max_price - min_price
+print(range_price)
+```
