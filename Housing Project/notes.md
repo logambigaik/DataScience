@@ -1,70 +1,341 @@
-#### Data Types Interview Questions
+# Data Types Interview Questions
+
 Practice answering common interview questions about general data concepts and data types.
 
-#### Introduction
-Hi! My name is %%%% . I’m so excited because today I’m interviewing candidates for the data scientist role on my team, which means that I get to hire someone to help me analyze all this data! I got my budget approved, went through all of the applications, did my phone screens, and now I’m down to just a few candidates.
+---
 
-Whoever I hire needs to be data-fluent. I’ve heard stories from my friends about hiring people who know all about the latest algorithms but just didn’t know the basics. That can really cost a lot of time and money, and I don’t want that to happen to me. So, I’m going to make sure my next hire is skilled in all stages of data science.
+## Introduction
 
-There are three types of tasks I want to be sure they can do:
+Hi! My name is Codey Cademy. I’m so excited because today I’m interviewing candidates for the data scientist role on my team. I’m looking for someone who understands all the stages of data science: exploratory analysis, diagnostic analyses, and data organization.
 
-Exploratory analysis
-Diagnostic analyses
-Data organization
-I’m going to ask them a mix of conceptual and applied questions to be sure they know the concepts and that they’d be able to apply them to the real world.
+---
 
-I might integrate some of these basic concepts into the other questions I ask them, too, but the basics are so important for this role that I am going to ask directly.
+## Theoretical Questions
 
-I really hope they talk through their answers. It’s so much easier to understand how someone thinks about data when they vocalize their thought process and assumptions. If I could give them one piece of advice for our day together, it would be:
+### How do you typically start an exploratory data analysis?
 
-When in doubt, talk it out!
+**Answer:**
+1. **Understand the context:** Clarify the problem statement, goals, and the source of the dataset.
+2. **Inspect the data:** Load the dataset and use `.head()`, `.info()`, and `.describe()` to get a general understanding.
+3. **Check for missing values:** Identify missing or null values using `.isnull().sum()`.
+4. **Data types:** Ensure that data types are as expected and convert them if needed.
+5. **Univariate analysis:** Analyze distributions of individual columns.
+6. **Bivariate/multivariate analysis:** Explore relationships using scatter plots, box plots, correlation matrices, etc.
+7. **Detect outliers and anomalies.**
+8. **Summarize findings:** Identify initial patterns, anomalies, and questions for deeper analysis.
 
-Directions
-For each question below, fill in your response in the free-response box provided. After you submit your answer, you will see our sample response. There are a lot of correct answers. Your answer may look different from ours, so we will touch on a few key points you should cover.
+---
 
-Theoretical Questions
-Hi! Welcome to your basic data types interview! We’re going to start off with a few conceptual questions about working with data.
+### Tell me about a data analytics project you worked on and the major steps you took to complete it.
 
-A person with long orange hair and light brown skin is looking up at a graph with stars as data points. The larger stars are connected by lines, creating a line graph. There is a telescope in front of the person.
+**Answer:**
+I worked on a real estate price prediction project. The steps I took were:
+1. **Problem understanding and data acquisition.**
+2. **Data cleaning:** Dealt with missing values, removed outliers, and handled data type issues.
+3. **EDA:** Performed univariate and multivariate analysis using visualization and statistics.
+4. **Feature engineering:** Created new variables and transformed features (e.g., log-transformed price).
+5. **Model selection:** Tested various models like linear regression, decision trees, and random forests.
+6. **Evaluation:** Used RMSE and cross-validation.
+7. **Deployment:** Shared insights via reports and dashboards.
 
-Free response
-How do you typically start an exploratory data analysis?
+---
 
-Get feedback
-Powered by OpenAI
- 
-Free response
-Tell me about a data analytics project* you worked on and the major steps you took to complete it.
+## Situational Questions
 
-(*Note that this could be a project you complete as part of this Skill Path.)
+### E-commerce site: 50% drop in checkouts without customer complaints. How would you diagnose the problem using site data?
 
-Submit Response
-The purpose of this kind of question is to be sure that you have worked on a project and give you the opportunity to talk about something that you should be very familiar with. Your answer should contain all the following elements:
+**Answer:**
+1. **Segment time:** Compare before and after the drop.
+2. **Funnel analysis:** Track user paths from landing to checkout.
+3. **Clickstream:** Check for broken links, delays, or errors in the checkout page.
+4. **Session duration:** Look for changes in user engagement.
+5. **A/B test logs:** Ensure no experimental changes caused the issue.
+6. **Backend logs:** Check for errors or downtime.
+7. **Device/browser split:** Ensure no compatibility issues.
 
-* A short summary of what the project was about, include the data source and the question.
-* A description of any assumptions that you made and why.
-* A brief summary of how you cleaned the data, explored it, and reshaped it to meet your needs.
-* A description of how you analyzed it. Did you do hypothesis testing? A/B Testing?
-* A brief summary of the results and how you interpreted them, including future questions or limitations.
+---
 
-#### Situational Questions
-* There are a lot of companies and organizations out there and we all face different challenges. The best interviewees I’ve met with really knew my company. They did their research and gave some thought to the types of problems we face and the data we work with. Let’s go ahead and apply the general concepts to some business problems.
+### Rideshare startup: What questions would you ask and how would you begin to explore Detroit-area data?
 
-* An e-commerce site: We have been collecting data on user behavior including clicks, time to checkout, unique visits, etc. Yesterday we saw a 50% drop in checkouts. We didn’t receive any customer complaints though. Using just the site data, how would you start to diagnose the problem?
+**Answer:**
+**Questions:**
+- What areas have low car ownership but high insurance premiums?
+- Is there a correlation between demographics and vehicle usage?
+- Are there patterns in insurance rates over time or by neighborhood?
 
- * A rideshare startup: We have demographic data, car ownership, and insurance premium data from 2019-2021 for residents in the Detroit area. We want to expand our services there in 2022. With this in mind, what questions would you develop for this dataset and how would you begin to explore this data?
+**Exploration steps:**
+1. **Clean the data:** Handle missing values and format date columns.
+2. **EDA:** Demographic distribution, vehicle ownership trends.
+3. **Mapping:** Use geospatial analysis for regional insights.
+4. **Time series:** Analyze trends from 2019 to 2021.
+5. **Clustering:** Segment residents for targeted marketing.
 
- * We just got access to new data sources, and one of them is time-bound! It looks to me like there’s some seasonality to it, but I’m not sure. I know a little bit about working with time, but not a lot. Looks like you also list familiarity with time series on your resume. Wonderful! Let’s talk about some simple time series analysis.
+---
 
- * What is time series analysis, and what aspects would you keep in mind when working with time series?
+## Temporal Data
 
- * Change a string into a timestamp in Python.
+### What is time series analysis, and what aspects would you keep in mind when working with time series?
 
- * Toy company: We launched a new toy campaign this year and want to know if our marketing was successful. How would you account for seasonal variation to determine if our advertisements affected sales?
+**Answer:**
+Time series analysis involves analyzing data points indexed in time order.
+Key aspects:
+- **Stationarity:** Constant mean and variance over time.
+- **Seasonality:** Periodic patterns.
+- **Trend:** Long-term increase or decrease.
+- **Noise:** Random variation.
+- **Lags and autocorrelation.**
+- **Handling missing timestamps.**
 
- * I only took a brief look at the new data we are pulling into our data lake, but I’m hoping you can help make some sense of it. I’m going to ask a few questions about how you’ve worked with text.
-  
- *  What steps would you take to normalize text?
+---
 
- * Large manufacturing company: We have a collection of employee generated incident reports. We would like to use these records to identify trends across departments. What would you do to process this data?
+### Coding: Convert string to timestamp in Python
 
+```python
+import pandas as pd
+
+date_str = "2023-07-15"
+date_obj = pd.to_datetime(date_str)
+print(date_obj)
+```
+
+---
+
+### Toy company: How would you account for seasonal variation to determine if ads affected sales?
+
+**Answer:**
+1. **Decompose the time series:** Use additive/multiplicative decomposition.
+2. **Create a control group:** Compare with regions not exposed to ads.
+3. **Use time series models:** Apply ARIMA or seasonal adjustment.
+4. **Year-over-year comparison:** Compare sales to same season in previous years.
+5. **Interrupted time series analysis.**
+
+---
+
+## Text Data
+
+### What steps would you take to normalize text?
+
+**Answer:**
+1. **Lowercasing.**
+2. **Removing punctuation and special characters.**
+3. **Tokenization.**
+4. **Removing stop words.**
+5. **Stemming or lemmatization.**
+6. **Handling misspellings.**
+7. **Removing extra spaces or line breaks.**
+
+---
+
+### Large manufacturing company: How would you process incident reports to identify trends?
+
+**Answer:**
+1. **Text cleaning and normalization.**
+2. **Named Entity Recognition (NER):** Identify department names, dates, etc.
+3. **Text vectorization:** TF-IDF or embeddings.
+4. **Topic modeling:** Use LDA or clustering to find common themes.
+5. **Trend analysis:** Time-series plotting of incident frequencies.
+6. **Data dashboard:** Present insights with visuals and filters.
+
+---
+
+## Review
+
+- Basic data management
+- Situational applications
+- Temporal and text data strategies
+
+
+
+
+# Data Cleaning Interview Questions
+
+Practice data cleaning and data wrangling interview questions.
+
+---
+
+## 📌 Introduction
+
+In this portion of the interview, we are going to talk about strategies for cleaning data. Data cleaning is a significant part of a data professional’s job — some estimate it takes up to **80% of a data scientist or analyst’s time**!
+
+This section includes:
+- **Conceptual questions** asking about your techniques
+- **Situational questions** where you describe your approach
+
+---
+
+## 🧠 Conceptual Questions
+
+### ❓ What steps do you take when you first clean a dataset?
+
+1. **Load and inspect** the dataset using `.head()`, `.info()`, and `.describe()`.
+2. **Check for missing values** using `.isnull().sum()` or `.isna()`.
+3. **Review data types** and convert where necessary (e.g., string to datetime).
+4. **Look for duplicates** using `.duplicated()` and drop them if needed.
+5. **Standardize string formatting** (trim whitespace, lowercase, etc.).
+6. **Handle outliers** through visualizations (boxplots, histograms).
+7. **Understand the context** and use domain knowledge to flag suspicious data.
+
+---
+
+### ❓ What data validation methods have you used?
+
+- Cross-checking ranges for numeric fields (e.g., ages between 0–120).
+- Regex validation for fields like emails, phone numbers, zip codes.
+- Ensuring date sequences are logical (e.g., end date > start date).
+- Validating categorical variables against a known set of values.
+- Using assertions and test cases in pipelines.
+
+---
+
+### ❓ Do you ever impute data? Why or why not?
+
+Yes, but it depends on:
+- **Why data is missing** (Missing Completely at Random vs Not at Random).
+- The importance of the feature to model accuracy.
+- Common methods:
+  - **Mean/median/mode imputation**
+  - **Forward/backward fill** for time series
+  - **Model-based imputation** (e.g., KNN, regression)
+- I always flag imputed values to avoid misleading conclusions.
+
+---
+
+## 💻 Coding Question
+
+**Objective**: Clean missing values from a dataset.
+
+**Dataset Snippet**:
+
+```
+Name              Salary    Age Children    Company
+Vanna Holland     5738.45   40  5           
+Gretchen Kemp     9765.50   53  2           Feugiat Lorem Ipsum Company
+Brittany Porter   8557.05   37              Magna Ut Industries
+Kaseem Crawford   1424.80   20  4           
+Lamar Payne       2442.63   28  5           Amet Incorporated
+```
+
+### ✅ Tasks:
+- Identify rows with missing values.
+- Remove rows with **>2 missing values**.
+- For rows with **1 missing value**, replace it with the **median** of the column.
+- Add a new column `Imputed` (True/False) indicating if any value was imputed.
+
+### 🧾 Code:
+
+```python
+import pandas as pd
+
+# Load dataset
+df = pd.read_csv('EmployeeRecords.csv')
+
+# Count missing values per row
+df['MissingCount'] = df.isnull().sum(axis=1)
+
+# Create Imputed column
+df['Imputed'] = False
+
+# Remove rows with >2 missing values
+df = df[df['MissingCount'] <= 2]
+
+# Impute single missing values with median
+for col in ['Salary', 'Age', 'Children']:
+    median_val = df[col].median()
+    mask = df[col].isnull()
+    df.loc[mask, col] = median_val
+    df.loc[mask, 'Imputed'] = True
+
+# Drop helper column
+df = df.drop(columns=['MissingCount'])
+
+# Final cleaned dataset
+print(df.head())
+```
+
+---
+
+## 🧩 Situational Questions
+
+### 🏥 Healthcare Company:
+
+> We have millions of anonymized records, but many appointment notes are missing. We want to explore the relationship between time nurses spend with patients and complaint categories.
+
+**Response**:
+- First, assess the **percentage and pattern of missing notes**.
+- Use other available fields (e.g., complaint codes, duration, diagnosis) to infer or cluster note patterns.
+- Consider **Natural Language Processing** to evaluate partial notes.
+- Avoid imputing text if notes are critical for interpretation — better to:
+  - Flag those records
+  - Perform analysis separately with and without them
+  - Investigate why the notes are missing (systemic error?)
+
+---
+
+### 🧠 Non-Profit Organization:
+
+> We're conducting a survey about policing attitudes. How would you determine if some responses were filled at random?
+
+**Response**:
+- Look for **straight-lining** (same response for every question).
+- Identify unusually **fast completion times**.
+- Check for **inconsistencies** (e.g., contradictory answers).
+- Use statistical techniques like:
+  - Response pattern clustering
+  - Mahalanobis distance for outlier detection
+- Compare to control group or benchmark answers.
+
+---
+
+## ✅ Review Summary
+
+
+- Techniques for **dealing with missing data**
+- When and how to **impute values**
+- Practical **data validation**
+- Situational judgment in **real-world data wrangling**
+
+---
+
+> “Data cleaning might not be glamorous, but it’s where true insights begin.”  
+> — Every real data scientist, ever.
+
+
+### Summary Statistics interview questions
+
+```python
+import pandas as pd
+
+df = pd.read_csv('avocado.csv')
+print(df.head(5))
+print(df.columns)
+
+avg_price =df['AveragePrice'].mean()
+print(avg_price)
+med_price = df['AveragePrice'].median()
+print(med_price)
+```
+# What does avg_price mean?
+avg_price_explanation = """
+The variable 'avg_price' represents the average (arithmetic mean) price of avocados 
+from all the entries in the dataset. It is calculated by summing all the values in 
+the 'AveragePrice' column and dividing by the number of entries.
+"""
+
+# Why are the mean and the median different?
+mean_vs_median_explanation = """
+The mean and the median are different because the distribution of avocado prices may 
+not be symmetrical. If there are outliers or a skew in the data (e.g., a few very high 
+or very low prices), they can pull the mean away from the median. The median, being 
+the middle value when the data is sorted, is less affected by extreme values.
+"""
+
+# When would you report the median instead of the mean?
+when_to_use_median_explanation = """
+You would report the median instead of the mean when the data is skewed or contains 
+outliers. The median provides a better representation of the 'typical' value in such 
+cases, as it is not influenced by extremely high or low values that could distort the mean.
+"""
+
+print(avg_price_explanation)
+print(mean_vs_median_explanation)
+print(when_to_use_median_explanation)
