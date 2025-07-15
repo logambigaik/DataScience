@@ -461,10 +461,10 @@ plt.show()
 corr_price_vol, p = pearsonr(df['AveragePrice'], df['Total Volume'])
 print(corr_price_vol)
 
+```
 """
 The Pearson correlation coefficient is approximately -.19. This is very low, and indicates no linear relationship between these variables. The scatterplot of Price versus sales shows two distinct clusters. It may be worth investigating these clusters independently in another round of evaluation.
 """
-```
 
 <img width="600" height="682" alt="image" src="https://github.com/user-attachments/assets/2abdc05b-de7b-460c-84eb-8145d7cd771d" />
 
