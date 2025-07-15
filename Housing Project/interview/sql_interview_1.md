@@ -42,4 +42,56 @@ FROM apps;
 
 SELECT MAX(rating)
 FROM apps;
+
+SELECT ROUND(AVG(rating), 2) AS 'average rating'
+FROM apps;
+
+```
+
+```sql
+SELECT *
+FROM projects
+JOIN employees
+  ON projects.employee_id = employees.id;
+
+SELECT *
+FROM projects
+LEFT JOIN employees
+  ON projects.employee_id = employees.id;
+```
+
+```sql
+SELECT *
+FROM math_students
+WHERE student_id IN (
+  SELECT student_id
+  FROM english_students
+);
+
+SELECT *
+FROM math_students
+WHERE grade IN (
+  SELECT grade
+  FROM math_students
+  WHERE student_id = 7
+);
+```
+
+
+```sql
+SELECT *
+FROM english_students
+WHERE student_id
+NOT IN (
+  SELECT student_id
+  FROM math_students
+);
+
+SELECT grade
+FROM math_students
+WHERE EXISTS (
+  SELECT grade
+  FROM english_students
+);
+
 ```
