@@ -1,8 +1,8 @@
-Data Types Interview Questions
+#### Data Types Interview Questions
 Practice answering common interview questions about general data concepts and data types.
 
-Introduction
-Hi! My name is Codey Cademy. I’m so excited because today I’m interviewing candidates for the data scientist role on my team, which means that I get to hire someone to help me analyze all this data! I got my budget approved, went through all of the applications, did my phone screens, and now I’m down to just a few candidates.
+#### Introduction
+Hi! My name is %%%% . I’m so excited because today I’m interviewing candidates for the data scientist role on my team, which means that I get to hire someone to help me analyze all this data! I got my budget approved, went through all of the applications, did my phone screens, and now I’m down to just a few candidates.
 
 Whoever I hire needs to be data-fluent. I’ve heard stories from my friends about hiring people who know all about the latest algorithms but just didn’t know the basics. That can really cost a lot of time and money, and I don’t want that to happen to me. So, I’m going to make sure my next hire is skilled in all stages of data science.
 
