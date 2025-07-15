@@ -387,3 +387,84 @@ print(range_price)
 
 * Only 85 avocados were sold on the day with the fewest avocado sales. On the day with the most avocado sales, 62,505,647 avocados were sold.
 This means that there was a range of 62,505,562 avocados!
+
+
+#### Histogram
+
+* The daily price of avocados is normally distributed, and the daily total volume sold is right-skewed. This means that there are many more days when there were just a few avocado sales versus days with lots of sales.
+
+```python
+import codecademylib3
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('avocado.csv')
+print(df.head())
+
+max_vol = df["Total Volume"].max()
+min_vol = df["Total Volume"].min()
+max_price = df.AveragePrice.max()
+min_price = df.AveragePrice.min()
+
+plt.hist(df.AveragePrice, range=(0, 3.5), bins=14)
+plt.show()
+```
+
+
+#### Interquartile Range
+
+* While range is a very common statistic to report, so is interquartile range. In this exercise, we will investigate the interquartile range of the two variables
+
+    * AveragePrice
+    * Total Volume
+ 
+```python
+import numpy as np
+import pandas as pd
+from scipy.stats import iqr
+
+df = pd.read_csv("avocado.csv")
+
+print(df.head())
+
+iqr_price = iqr(df['AveragePrice'])
+print(iqr_price)
+
+iqr_vol = iqr(df['Total Volume'])
+print(iqr_vol)
+
+"""The interquartile range for the price is just 56 cents. This means that the majority of avocados, or the middle 50% of avocadoes were sold within 56 cents of each other"""
+
+"""The middle 50% of total volume of daily sales was within 422,123. The fact that this is so much smaller than 62,000,000 demonstrates that there is a huge range in the top quartile, incidating some outlier days for the sale of avocados"""
+```
+
+#### Association between Variables
+In this final exercise, we’d like you to determine if there is an association between AveragePrice and Total Volume.
+
+If we lower the price of avocados, do people also purchase fewer of them? You do not need to determine if there is a causal relationship between the variables, but you should be able to determine if there is an association.
+
+```python
+import codecademylib3
+import pandas as pd
+import matplotlib.pyplot as plt 
+from scipy.stats import pearsonr
+
+
+df = pd.read_csv("avocado.csv")
+
+# create your scatter plot here:
+plt.scatter(df['AveragePrice'], df['Total Volume'])
+plt.xlabel('Average Daily Price')
+plt.ylabel('Total Daily Sales')
+plt.show()
+
+# calculate corr_sqfeet_beds and print it out:
+corr_price_vol, p = pearsonr(df['AveragePrice'], df['Total Volume'])
+print(corr_price_vol)
+
+"""The Pearson correlation coefficient is approximately -.19. This is very low, and indicates no linear relationship between these variables. The scatterplot of Price versus sales shows two distinct clusters. It may be worth investigating these clusters independently in another round of evaluation."""
+```
+
+<img width="600" height="682" alt="image" src="https://github.com/user-attachments/assets/2abdc05b-de7b-460c-84eb-8145d7cd771d" />
+
+
