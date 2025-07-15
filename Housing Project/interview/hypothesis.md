@@ -2,7 +2,7 @@
 # Hypothesis Testing Interview Questions
 
 ## Introduction
-As you know, my team is in need of someone who can help us answer our data questions. We have a lot of data, I’d say maybe too much for one person to handle. I’m looking for a candidate who can work with samples and draw conclusions with a certain level of confidence.
+ We have a lot of data, I’d say maybe too much for one person to handle. I’m looking for a candidate who can work with samples and draw conclusions with a certain level of confidence.
 
 As with any candidate, I am also looking for a problem solver who can clearly communicate their thinking and knowledge, someone who is curious about our data and has ideas on how to solve our specific business problems.
 
