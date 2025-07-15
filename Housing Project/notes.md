@@ -380,3 +380,10 @@ print(max_price, min_price)
 range_price = max_price - min_price
 print(range_price)
 ```
+
+#### Hint 
+
+* On the cheapest day for avocados, they sold for just 44 cents. On the most expensive day, they were $3.25. That’s a $2.81 range in avocado prices.
+
+* Only 85 avocados were sold on the day with the fewest avocado sales. On the day with the most avocado sales, 62,505,647 avocados were sold.
+This means that there was a range of 62,505,562 avocados!
