@@ -444,7 +444,6 @@ In this final exercise, we’d like you to determine if there is an association 
 If we lower the price of avocados, do people also purchase fewer of them? You do not need to determine if there is a causal relationship between the variables, but you should be able to determine if there is an association.
 
 ```python
-import codecademylib3
 import pandas as pd
 import matplotlib.pyplot as plt 
 from scipy.stats import pearsonr
@@ -462,7 +461,9 @@ plt.show()
 corr_price_vol, p = pearsonr(df['AveragePrice'], df['Total Volume'])
 print(corr_price_vol)
 
-"""The Pearson correlation coefficient is approximately -.19. This is very low, and indicates no linear relationship between these variables. The scatterplot of Price versus sales shows two distinct clusters. It may be worth investigating these clusters independently in another round of evaluation."""
+"""
+The Pearson correlation coefficient is approximately -.19. This is very low, and indicates no linear relationship between these variables. The scatterplot of Price versus sales shows two distinct clusters. It may be worth investigating these clusters independently in another round of evaluation.
+"""
 ```
 
 <img width="600" height="682" alt="image" src="https://github.com/user-attachments/assets/2abdc05b-de7b-460c-84eb-8145d7cd771d" />
