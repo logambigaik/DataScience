@@ -95,3 +95,43 @@ WHERE EXISTS (
 );
 
 ```
+
+```sql
+SELECT title, week, gross, 
+  SUM(gross) OVER (
+    PARTITION BY title 
+    ORDER BY week
+  ) AS 'running_total_gross'
+FROM box_office;
+```
+
+```sql
+SELECT ROW_NUMBER()
+OVER (
+  ORDER BY gross
+) AS 'row_num', title, week, gross
+FROM box_office;
+```
+
+```sql
+SELECT id, product_id, price * quantity
+FROM orders;
+```
+
+```sql
+SELECT date, (CAST(high AS 'REAL') + 
+  CAST(low AS 'REAL')) / 2.0 AS 'average'
+FROM weather;
+```
+
+```sql
+SELECT purchase_id, DATE(purchase_date, '+7 days')
+FROM purchases;
+
+SELECT STRFTIME('%H', purchase_date) FROM purchases;
+```
+```sql
+SELECT STRFTIME('%m-%d', purchase_date) AS 'reformatted'
+FROM purchases;
+```
+
